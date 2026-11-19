@@ -1,0 +1,14 @@
+# Prototipo Kora IA.
+#   1. Copia .env.example a .env y pon tu GEMINI_API_KEY.
+#   2. docker compose up --build   → abrir http://localhost:5190
+name: kora
+
+services:
+  prototipo:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "5190:5190"

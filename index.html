@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kora IA · Asistente virtual para pymes</title>
+  <meta name="description" content="Prototipo de Kora IA S.A.S.: asistente virtual con inteligencia artificial para la atención al cliente de pymes en Colombia.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230f5c52'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' fill='%23f2c14e' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="a11y-bar" role="region" aria-label="Opciones de accesibilidad">
+    <div class="wrap">
+      <span class="label">Accesibilidad · WCAG 2.2 AA</span>
+      <span id="text-size-label" class="sr-only">Tamaño del texto</span>
+      <div role="group" aria-labelledby="text-size-label" class="btn-row" style="gap:.35rem">
+        <button type="button" data-text-size="base" aria-pressed="true">A</button>
+        <button type="button" data-text-size="lg" aria-pressed="false" style="font-size:1.05em">A+</button>
+        <button type="button" data-text-size="xl" aria-pressed="false" style="font-size:1.15em">A++</button>
+      </div>
+      <button type="button" id="contrast-toggle" aria-pressed="false">Alto contraste</button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#/" aria-label="Kora IA, inicio">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        Kora<small>IA S.A.S.</small>
+      </a>
+      <button type="button" class="btn btn-ghost btn-sm nav-toggle" aria-expanded="false" aria-controls="main-nav">Menú</button>
+      <nav class="nav" id="main-nav" aria-label="Principal">
+        <ul>
+          <li><a href="#/planes">Planes</a></li>
+          <li><a href="#/chat">Demo del asistente</a></li>
+          <li><a href="#/panel">Panel de la pyme</a></li>
+          <li><a href="#/privacidad">Tus datos</a></li>
+          <li><a href="#/incidentes">Incidentes</a></li>
+          <li><a href="#/accesibilidad">Accesibilidad</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <p><strong>Kora IA S.A.S.</strong> · NIT 901.234.567-7 (ficticio) · Bogotá D.C., Colombia.<br>
+          Atención de PQR: <a href="mailto:soporte@kora-ia.co">soporte@kora-ia.co</a> · respuesta en máximo 15 días hábiles.
+          También puedes acudir a la <a href="https://www.sic.gov.co" rel="noopener" target="_blank">Superintendencia de Industria y Comercio<span class="sr-only"> (abre en otra pestaña)</span></a>.</p>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="#/terminos">Términos y condiciones v1.0</a></li>
+            <li><a href="#/privacidad">Política de tratamiento de datos</a></li>
+            <li><a href="#/privacidad#pqr">Peticiones, quejas y reclamos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Producto</h2>
+          <ul>
+            <li><a href="#/planes">Planes y precios</a></li>
+            <li><a href="#/chat">Probar el asistente</a></li>
+            <li><a href="#/accesibilidad">Declaración de accesibilidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="proto-note">Prototipo académico · Proyecto Final Integrador, Aspectos Legales, Comerciales y Éticos de la Profesión (UAN, 2026). Kora IA S.A.S. es una empresa ficticia: no se envían correos, no se cobran pagos y los datos solo se guardan en este navegador.</p>
+    </div>
+  </footer>
+
+  <div class="toast-zone" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="js/logic.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/views/home.js"></script>
+  <script src="js/views/plans.js"></script>
+  <script src="js/views/checkout.js"></script>
+  <script src="js/views/chat.js"></script>
+  <script src="js/views/panel.js"></script>
+  <script src="js/views/privacy.js"></script>
+  <script src="js/views/incidents.js"></script>
+  <script src="js/views/accessibility.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

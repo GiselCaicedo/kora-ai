@@ -1,0 +1,9 @@
+{
+  "name": "kora-ia-prototipo",
+  "private": true,
+  "description": "Prototipo de Kora IA S.A.S. (Proyecto Final Integrador, UAN 2026)",
+  "scripts": {
+    "test": "node --test tests/",
+    "start": "node server.js"
+  }
+}
