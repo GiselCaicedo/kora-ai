@@ -37,11 +37,28 @@ docker compose up --build   # abrir http://localhost:5190
 docker compose down
 ```
 
-Pruebas de la lógica:
+Pruebas (lógica, chat con Gemini simulado y función de Vercel):
 
 ```sh
 npm test
 ```
+
+## Publicar en Vercel
+
+El repositorio ya está listo: las páginas se sirven como archivos estáticos y `/api/chat` y `/api/health`
+son funciones de Vercel (`api/`) que usan el mismo núcleo que el servidor local (`lib/chat-core.js`).
+
+1. En [vercel.com/new](https://vercel.com/new) importa este repositorio de GitHub.
+2. *Framework Preset*: **Other**. No hace falta comando de compilación.
+3. En *Environment Variables* agrega `GEMINI_API_KEY` con tu clave (opcional: `GEMINI_MODEL`).
+4. *Deploy*. Para comprobar que la clave quedó bien, abre `https://tu-proyecto.vercel.app/api/health`:
+   debe decir `"gemini": true`.
+
+Cada `git push` a `main` vuelve a publicar el sitio. Si cambias la variable de entorno, haz *Redeploy*.
+
+Al ser público, cualquiera puede usar el chat y gastar la cuota de la clave. Para limitarlo: 20 mensajes
+por minuto por IP en cada instancia, mensajes de máximo 1.000 caracteres y respuestas cortas. Conviene
+ponerle un tope de gasto a la clave en Google AI Studio.
 
 ## Qué muestra cada pantalla y qué evidencia cubre
 
@@ -72,7 +89,10 @@ npm test
 ## Estructura
 
 ```
-server.js           servidor estático + intermediario con Gemini (la clave vive aquí)
+server.js           servidor local: archivos estáticos + /api/chat
+lib/chat-core.js    núcleo del chat con Gemini (prompt, filtro, modelos de respaldo, límite de uso)
+api/                funciones de Vercel: chat.js y health.js
+vercel.json         configuración de Vercel (sin compilación, encabezados de seguridad)
 index.html          shell, navegación y barra de accesibilidad
 css/                base.css (tokens), components.css, views.css
 js/logic.js         lógica pura: IVA, días hábiles, Ley 2300, filtro de datos, OTP, NIT

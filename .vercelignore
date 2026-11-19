@@ -1,0 +1,6 @@
+.env
+tests
+server.js
+Dockerfile
+docker-compose.yml
+.dockerignore
