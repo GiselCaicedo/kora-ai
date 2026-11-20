@@ -64,6 +64,10 @@ test('DERIVAR o respuesta sin fuente pasa a un asesor', async () => {
   const a = await handleChat({ message: '¿tienen descuento?', knowledge: KB }, ip());
   assert.equal(a.json.derive, true);
   assert.equal(a.json.answer, '');
+  mockGemini('DERIVAR: Eso no lo tengo confirmado, ¿te paso con alguien del equipo?');
+  const c = await handleChat({ message: '¿tienen descuento?', knowledge: KB }, ip());
+  assert.equal(c.json.derive, true);
+  assert.equal(c.json.handoff, 'Eso no lo tengo confirmado, ¿te paso con alguien del equipo?');
   mockGemini('Claro, hay 50 % de descuento.');
   const b = await handleChat({ message: '¿tienen descuento?', knowledge: KB }, ip());
   assert.equal(b.json.derive, true);

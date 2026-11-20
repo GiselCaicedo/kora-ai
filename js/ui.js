@@ -46,7 +46,7 @@
     el.className = 'toast';
     el.setAttribute('role', 'status');
     el.innerHTML = `<strong>${esc(title)}</strong>${html ?? `<span>${esc(body)}</span>`}
-      <button type="button" class="btn btn-sm btn-ghost" style="--fg:#fff;border-color:rgba(255,255,255,.5)">Cerrar</button>`;
+      <button type="button" class="btn btn-sm btn-quiet">Cerrar</button>`;
     el.querySelector('button').addEventListener('click', () => el.remove());
     zone.appendChild(el);
     if (timeout) setTimeout(() => el.remove(), timeout);

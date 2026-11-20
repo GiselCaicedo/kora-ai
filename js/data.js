@@ -59,8 +59,8 @@
       answer: 'Hacemos domicilios en Chapinero y Teusaquillo. El envío cuesta $5.000 y llega en 40 minutos aproximadamente.' },
     { id: 'kb4', title: 'Pan sin gluten', validated: true, keywords: ['gluten', 'celiaco', 'integral', 'sin'],
       answer: 'Tenemos pan sin gluten los martes y viernes. Se prepara en un área separada, pero no podemos garantizar que no haya trazas.' },
-    { id: 'kb5', title: 'Promoción de diciembre (borrador)', validated: false, keywords: ['descuento', 'promocion', 'promo', 'oferta', 'diciembre'],
-      answer: '2x1 en pan de bono todo diciembre.' },
+    { id: 'kb5', title: 'Promoción de diciembre', validated: false, keywords: ['descuento', 'promocion', 'promo', 'oferta', 'diciembre'],
+      answer: 'Durante todo diciembre tenemos 2x1 en pan de bono, todos los días.' },
   ];
 
   const ACCESSIBILITY_CHECKLIST = Object.freeze([

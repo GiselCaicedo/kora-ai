@@ -1,37 +1,46 @@
 /* Kora IA · tokens y base. Contrastes medidos para WCAG 2.2 AA (≥ 4.5:1). */
 :root {
-  --paper: #fbf7f0;
-  --paper-2: #f3ece0;
+  --paper: #f6f5f1;
+  --paper-2: #eeece6;
   --card: #ffffff;
-  --ink: #102a27;          /* 14.6:1 sobre paper */
-  --ink-2: #3d524f;        /* 7.9:1 */
-  --line: #d9cfbf;
-  --teal: #0f5c52;         /* 7.4:1 */
-  --teal-soft: #dcefe9;
-  --coral: #b2431f;        /* 5.4:1 */
-  --coral-soft: #fbe3d8;
-  --sun: #f2c14e;
+  --ink: #191d1c;          /* 15.9:1 sobre paper */
+  --ink-2: #545b58;        /* 6.4:1 */
+  --line: #e2dfd7;
+  --line-strong: #8a8f8c;  /* bordes de campos, 3.3:1 */
+
+  /* Un solo color de acento. */
+  --accent: #1d5e50;       /* 7.3:1 */
+  --accent-hover: #164a3f;
+  --accent-soft: #e4efeb;
+
   --ok: #1d6b3a;
-  --ok-soft: #dff1e4;
-  --warn: #8a5300;
-  --warn-soft: #fbefd5;
-  --bad: #a3231f;
-  --bad-soft: #fbe1df;
+  --ok-soft: #e3f1e7;
+  --warn: #7f4f06;
+  --warn-soft: #f8eedc;
+  --bad: #9f2a22;
+  --bad-soft: #f8e4e1;
   --focus: #1a56db;
 
-  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  /* Alias de versiones anteriores (todo apunta al mismo acento). */
+  --teal: var(--accent);
+  --teal-soft: var(--accent-soft);
+  --coral: var(--accent);
+  --coral-soft: var(--accent-soft);
+
+  --font: 'Geist', 'Segoe UI', system-ui, sans-serif;
+  --font-display: var(--font);
+  --font-body: var(--font);
+  --font-mono: 'Geist Mono', ui-monospace, Consolas, monospace;
 
   --text-base: 1.0625rem;
   --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 22px;
-  --shadow-1: 0 1px 0 rgba(16, 42, 39, .06), 0 2px 6px rgba(16, 42, 39, .06);
-  --shadow-2: 0 2px 0 rgba(16, 42, 39, .08), 0 18px 40px -18px rgba(16, 42, 39, .35);
-  --ease: cubic-bezier(.16, 1, .3, 1);
+  --r-md: 10px;
+  --r-lg: 14px;
+  --shadow-1: 0 1px 2px rgba(25, 35, 32, .06);
+  --shadow-2: 0 1px 2px rgba(25, 35, 32, .05), 0 12px 32px -12px rgba(25, 45, 40, .22);
+  --ease: cubic-bezier(.2, .8, .2, 1);
   --gutter: clamp(16px, 4vw, 40px);
-  --maxw: 1180px;
+  --maxw: 1160px;
 }
 
 /* Modo alto contraste (control propio, además del del sistema operativo). */
@@ -42,10 +51,9 @@
   --ink: #000000;
   --ink-2: #000000;
   --line: #000000;
-  --teal: #003d36;
-  --teal-soft: #ffffff;
-  --coral: #7a1d00;
-  --coral-soft: #ffffff;
+  --line-strong: #000000;
+  --accent: #003d33;
+  --accent-soft: #ffffff;
 }
 
 :root[data-text='lg'] { --text-base: 1.25rem; }
@@ -54,46 +62,35 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 /* scroll-padding: el encabezado fijo no tapa el elemento enfocado (WCAG 2.4.11). */
-html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; scroll-behavior: smooth; }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-size: var(--text-base);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-
-/* Grano sutil de papel. */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .35;
-  background-image: radial-gradient(rgba(16, 42, 39, .07) 1px, transparent 1px);
-  background-size: 3px 3px;
-}
-:root[data-contrast='high'] body::before { display: none; }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  line-height: 1.08;
+  font-family: var(--font);
+  line-height: 1.15;
   letter-spacing: -.02em;
   margin: 0 0 .5em;
-  font-weight: 700;
+  font-weight: 600;
+  text-wrap: balance;
 }
-h1 { font-size: clamp(2.4rem, 1.4rem + 4.2vw, 4.6rem); letter-spacing: -.035em; }
-h2 { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); }
-h3 { font-size: 1.3rem; letter-spacing: -.01em; }
-p { margin: 0 0 1em; }
-a { color: var(--teal); text-underline-offset: .18em; text-decoration-thickness: .08em; }
-a:hover { color: var(--coral); }
+h1 { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem); letter-spacing: -.035em; line-height: 1.05; }
+h2 { font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem); }
+h3 { font-size: 1.12rem; letter-spacing: -.01em; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 small { font-size: .85em; }
-code, .mono { font-family: var(--font-mono); font-size: .88em; }
+code, .mono { font-family: var(--font-mono); font-size: .85em; }
 
 /* Foco siempre visible (WCAG 2.4.7 y 2.4.11). */
 :focus-visible {
@@ -111,7 +108,7 @@ code, .mono { font-family: var(--font-mono); font-size: .88em; }
   color: #fff;
   padding: .6em 1em;
   border-radius: var(--r-sm);
-  font-weight: 700;
+  font-weight: 600;
 }
 .skip-link:focus { top: 12px; color: #fff; }
 
@@ -130,34 +127,34 @@ code, .mono { font-family: var(--font-mono); font-size: .88em; }
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  position: relative;
-  z-index: 1;
 }
 
+/* Antetítulo discreto, en minúscula normal (sin versalitas ni monoespaciada). */
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: .5em;
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--coral);
-  margin-bottom: 1rem;
+  display: block;
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: .6rem;
 }
-.eyebrow::before {
-  content: '';
-  width: 22px; height: 2px;
-  background: currentColor;
+
+/* Referencia legal: texto pequeño, no etiqueta de color. */
+.law, .ref {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: normal;
 }
+.law::before, .ref::before { content: '§ '; color: var(--accent); }
 
 .muted { color: var(--ink-2); }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
   }
 }
